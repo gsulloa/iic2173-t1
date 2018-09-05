@@ -1,4 +1,4 @@
-from app import db
+from main import db
 from time import gmtime, strftime
 
 
