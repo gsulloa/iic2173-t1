@@ -25,9 +25,13 @@ Ahora configuramos la base de datos:
 su -u postgres psql
 $ create database iic2173t1;
 ```
+Para después correr las migraciones:
+```sh
+python manage.py db update
+```
 
 Y finalmente corremos el servidor
 
 ```sh
-python app.py
+python manage.py runserver
 ```

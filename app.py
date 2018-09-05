@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-from time import gmtime, strftime
 import os
 
 app = Flask(__name__)
@@ -15,9 +14,12 @@ def index():
     if request.method == 'POST':
         comment = request.form['comment']
         client_ip = request.remote_addr
-        time = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
-        print(comment, client_ip, time)
-    return render_template('comments/index.html')
+        db.session.add(
+            Comment(text=comment, client_ip=client_ip)
+        )
+        db.session.commit()
+    comments = db.session.query(Comment).all()
+    return render_template('comments/index.html', comments=comments)
 
 if __name__ == '__main__':
     app.run()
