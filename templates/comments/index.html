@@ -9,7 +9,22 @@
     <input name="comment">
     <input type="submit" value="enviar">
   </form>
-  <ul>
-    <li>Hola!</li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Texto</th>
+        <th>IP</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comment in comments %}
+        <tr>
+          <td>{{ comment.text }}</td>
+          <td>{{ comment.client_ip }}</td>
+          <td>{{ comment.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
