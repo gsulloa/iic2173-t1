@@ -3,7 +3,9 @@
 ## Requisitos
 
 Para iniciar el programa es necesario tener instalado previamente:
+- Python3.6
 - virtualenv >=16.0.0
+- Postgres >=9.4
 
 ## Setup
 
@@ -18,8 +20,14 @@ Luego, instalamos los requisitos
 pip install -r requirements.txt
 ```
 
-Y corremos el servidor
+Ahora configuramos la base de datos:
+```sh
+su -u postgres psql
+$ create database iic2173t1;
+```
+
+Y finalmente corremos el servidor
 
 ```sh
-FLASK_APP=index.py flask run
+python app.py
 ```
