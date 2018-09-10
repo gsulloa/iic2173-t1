@@ -35,3 +35,26 @@ Y finalmente corremos el servidor
 ```sh
 python manage.py runserver
 ```
+
+## Production
+
+Para producción, descargaremos el repositorio, agregamos nuestras variables de entorno e iniciamos con `docker-compose`
+
+```sh
+git clone https://github.com/gsulloa/iic2173-t1.git server
+cd server
+touch .env
+```
+
+```env
+# .env
+DATABASE_URL=postgresql://postgres:@postgres/iic2173t1
+SECRET_KEY=this-really-needs-to-be-changed
+APP_SETTINGS=config.ProductionConfig
+```
+
+```sh
+docker-compose build
+docker-compose exec python manage.py upgrade
+docker-compose up -d
+```
