@@ -10,10 +10,10 @@ class Comment(db.Model):
     client_ip = db.Column(db.String())
     created_at = db.Column(db.DateTime())
 
-    def __init__(self, text, client_ip, created_at=strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())):
+    def __init__(self, text, client_ip):
         self.text = text
         self.client_ip = client_ip
-        self.created_at = created_at
+        self.created_at = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
     def __repr__(self):
         return '<id {} text={} client_ip={} created_at={}>'.format(self.id, self.text, self.client_ip, self.created_at)
