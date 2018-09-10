@@ -11,5 +11,5 @@ COPY ./main.py /app
 COPY ./config.py /app
 COPY ./manage.py /app
 COPY ./models.py /app
-COPY ./templates /app
-COPY ./migrations /app
+COPY ./templates /app/templates
+COPY ./migrations /app/migrations
